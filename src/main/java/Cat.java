@@ -24,8 +24,11 @@ public class Cat {
     }
 
     public void eat (Bowl bowl){
-        if (this.isFullness()&&System.currentTimeMillis()-this.getFullness_time()>hungry_time)
+        if (this.isFullness()&&System.currentTimeMillis()-this.getFullness_time()>hungry_time) {
             this.setFullness(false);
+            this.setFullness_time(0);
+            System.out.println(this.getName()+" is hungry again");
+        }
         else if (this.isFullness()) {
             System.out.printf("Сat %s is not hungry\n",this.name);
         }
@@ -35,7 +38,7 @@ public class Cat {
             this.setFullness(true);
             this.setFullness_time(System.currentTimeMillis());
             System.out.printf("Cat %s ate some food\n", this.name);
-            System.out.printf("Cat %s is Fullness\n",this.name);
+            System.out.printf("Cat %s is Fullness(объелся)\n",this.name);
         }
         else if (!this.isFullness()) System.out.printf("bowl for %s appetite doesn't have the right amount of food\n",this.name);
         }
